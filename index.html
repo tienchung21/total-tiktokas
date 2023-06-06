@@ -9,16 +9,16 @@
 
         function updateValue(elementId) {
             var element = document.getElementById(elementId);
-            var value = element.value.replace(/[,.]/g, ""); // Loại bỏ dấu chấm phân cách hàng nghìn và dấu phẩy
+            var value = element.value.replace(/[,,]/g, ""); // Loại bỏ dấu chấm phân cách hàng nghìn và dấu phẩy
             var parsedValue = value !== "" ? parseFloat(value) : 0; // Chuyển đổi thành số thực
             var formattedValue = formatNumber(parsedValue);
             element.value = formattedValue;
         }
 
         function calculate() {
-            var A = parseFloat(document.getElementById("inputA").value.replace(/[,.]/g, ""));
-            var B = parseFloat(document.getElementById("inputB").value.replace(/[,.]/g, ""));
-            var C = parseFloat(document.getElementById("inputC").value.replace(/[,.]/g, ""));
+            var A = parseFloat(document.getElementById("inputA").value.replace(/[,,]/g, ""));
+            var B = parseFloat(document.getElementById("inputB").value.replace(/[,,]/g, ""));
+            var C = parseFloat(document.getElementById("inputC").value.replace(/[,,]/g, ""));
 
             var formattedA = formatNumber(A); // Định dạng A
             var formattedB = formatNumber(B); // Định dạng B
@@ -48,8 +48,8 @@
             var totalD = 0;
             var rows = table.getElementsByTagName("tr");
             for (var i = 1; i < rows.length; i++) {
-                var cell = rows[i].getElementsByTagName("td")[3];
-                var value = parseFloat(cell.innerHTML.replace(/[,.]/g, ""));
+                var cells = rows[i].getElementsByTagName("td");
+                var value = parseFloat(cells[3].innerText.replace(/[,,]/g, ""));
                 totalD += value;
             }
 
